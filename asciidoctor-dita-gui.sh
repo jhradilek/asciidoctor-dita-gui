@@ -187,3 +187,57 @@ display_error_output "$error_output"
 
 # Terminate the script:
 exit 0
+
+# Manual page:
+:<<-=cut
+
+=head1 NAME
+
+asciidoctor-dita-gui - a simple GUI for conversion from AsciiDoc to DITA
+
+=head1 SYNOPSIS
+
+B<asciidoctor-dita-gui> [I<file>]
+
+B<asciidoctor-dita-gui> B<-hv>
+
+=head1 DESCRIPTION
+
+The B<asciidoctor-dita-gui> extracts attribute names from the supplied
+AsciiDoc file, allows you to define their values along with other
+conversion parameters, and then converts the file to either DITA topic,
+concept, reference, or task.
+
+If no I<file> is supplied on the command line, B<asciidoctor-dita-gui>
+opens a file dialog first to allow you to select a file to convert.
+
+=head1 OPTIONS
+
+=over
+
+=item B<-h>
+
+Displays usage information and terminates the script.
+
+=item B<-V>
+
+Displays the script version and terminates the script.
+
+=back
+
+=head1 SEE ALSO
+
+B<asciidoctor>(1)
+
+=head1 BUGS
+
+To report a bug or submit a patch, please visit
+L<https://github.com/jhradilek/asciidoctor-dita-gui/issues>.
+
+=head1 COPYRIGHT
+
+Copyright (C) 2024 Jaromir Hradilek E<lt>jhradilek@gmail.comE<gt>
+
+This program is free software, released under the terms of the MIT license.
+
+=cut

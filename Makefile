@@ -50,14 +50,17 @@ all: $(MANS)
 
 # Install the files to the system:
 .PHONY: install
-install: $(SRCS) $(DOCS)
+install: $(SRCS) $(DOCS) $(MANS)
 	@echo "Preparing installation directories..."
 	$(INSTALL) -d $(bindir)
 	$(INSTALL) -d $(docdir)
+	$(INSTALL) -d $(mandir)
 	@echo "Copying executable files..."
 	$(INSTALL) -m 755 $(SRCS) $(bindir)/$(NAME)
 	@echo "Copying documentation files..."
 	$(INSTALL) -m 644 $(DOCS) $(docdir)
+	@echo "Copying manual pages..."
+	$(INSTALL) -m 644 $(MANS) $(mandir)
 
 # Uninstall the files from the system:
 .PHONY: uninstall
@@ -66,9 +69,12 @@ uninstall:
 	-rm -f $(bindir)/$(NAME)
 	@echo "Removing documentation files..."
 	-rm -f $(addprefix $(docdir)/,$(DOCS))
+	@echo "Removing manual pages..."
+	-rm -f $(addprefix $(mandir)/,$(MANS))
 	@echo "Removing empty directories..."
 	-rmdir $(bindir)
 	-rmdir $(docdir)
+	-rmdir $(mandir)
 
 # Clean up generated files:
 .PHONY: clean

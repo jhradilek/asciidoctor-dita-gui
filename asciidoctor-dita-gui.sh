@@ -100,14 +100,14 @@ function get_conversion_settings {
 #
 # Usage: get_input_file
 function get_input_file {
-  zenity --file-selection --title='Select an AsciiDoc file' 2>/dev/null
+  zenity --file-selection --title='Select an AsciiDoc file' --file-filter='AsciiDoc Files | *.adoc' 2>/dev/null
 }
 
 # Open a dialog window to select the output file.
 #
 # Usage: get_output_file INPUT_FILE
 function get_output_file {
-  zenity --file-selection --title='Select the output destination' --save --file-filter='DITA files | *.dita' --filename="${1%.adoc}.dita" 2>/dev/null
+  zenity --file-selection --title='Select the output destination' --save --file-filter='DITA Files | *.dita' --filename="${1%.adoc}.dita" 2>/dev/null
 }
 
 

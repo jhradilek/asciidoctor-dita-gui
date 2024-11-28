@@ -89,7 +89,11 @@ function get_attribute_list {
 #
 # Usage: get_conversion_settings
 function get_conversion_settings {
-  zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task|Task (generated)|Topic' --add-combo='UI macros' --combo-values='Enabled|Disabled' `echo "$1" | sed -e 's/^/--add-entry=/'` 2>/dev/null
+  if [[ -z "$1" ]]; then
+    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task|Task (generated)|Topic' --add-combo='UI macros' --combo-values='Enabled|Disabled' 2>/dev/null
+  else
+    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task|Task (generated)|Topic' --add-combo='UI macros' --combo-values='Enabled|Disabled' `echo "$1" | sed -e 's/^/--add-entry=/'` 2>/dev/null
+  fi
 }
 
 # Open a dialog window to select the input file.

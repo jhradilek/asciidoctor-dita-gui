@@ -242,6 +242,6 @@ L<https://github.com/jhradilek/asciidoctor-dita-gui/issues>.
 
 Copyright (C) 2024 Jaromir Hradilek E<lt>jhradilek@gmail.comE<gt>
 
-This program is free software, released under the terms of the MIT license.
+This program is free software, released under the terms of the MIT license. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 =cut

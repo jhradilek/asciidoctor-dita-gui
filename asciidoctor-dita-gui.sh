@@ -82,7 +82,7 @@ function display_error_output {
 #
 # Usage: get_attribute_list FILE_NAME
 function get_attribute_list {
-  grep -hoP '\{\w[\w-]+\}' "$1" | tr -d '{}' | grep -ve '^nbsp$' | sort -uf
+  grep -hoP '\{\w[\w-]+\}|ifn?def::\w+[\w-]+' "$1" | sed -e 's/^ifn\?def::\|[{}]//g' | grep -ve '^nbsp$' | sort -uf
 }
 
 # Open a dialog to customize conversion settings.

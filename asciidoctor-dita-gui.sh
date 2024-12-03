@@ -26,7 +26,7 @@
 
 # General information about the script:
 declare -r SCRIPT_NAME=${0##*/}
-declare -r SCRIPT_VERSION='0.0.1'
+declare -r SCRIPT_VERSION='0.1.0'
 
 
 # Print a message to standard error output and terminate the script with a

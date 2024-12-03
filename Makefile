@@ -24,7 +24,7 @@
 
 # General information:
 NAME    = asciidoctor-dita-gui
-VERSION = 0.0.1
+VERSION = 0.1.0
 
 # General settings:
 SHELL   = /bin/sh

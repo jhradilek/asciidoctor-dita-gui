@@ -68,7 +68,7 @@ function convert_to_dita {
   done
 
   # Convert the file:
-  asciidoctor -r dita-topic -b dita-topic -o - $ui_macros $options "$input_file" | dita-convert -t "$content_type" -o "$output_file" - 2>&1
+  (asciidoctor -r dita-topic -b dita-topic -o - $ui_macros $options "$input_file" | dita-convert -t "$content_type" -o "$output_file" -) 2>&1
 }
 
 # Open a dialog to display standard error output of the conversion:

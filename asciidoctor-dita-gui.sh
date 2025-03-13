@@ -54,21 +54,24 @@ function convert_to_dita {
   local -r settings=$4
 
   # Compose the output type option:
-  local content_type=$(echo "$settings" | sed '1q;d' | sed -e 's/Task (generated)/task-gen/;s/.*/\L&/')
+  local content_type=$(echo "$settings" | sed '1q;d' | sed -e 's/.*/\L&/')
+
+  # Compose the generated option:
+  local generated=$(echo "$settings" | sed '2q;d' | grep -q 'Yes' && echo '-g' || echo '-G')
 
   # Compose the UI macro option:
-  local ui_macros=$(echo "$settings" | sed '2q;d' | grep -q 'Enabled' && echo '-a experimental' || echo '')
+  local ui_macros=$(echo "$settings" | sed '3q;d' | grep -q 'Enabled' && echo '-a experimental' || echo '')
 
   # Compose the attribute definitions:
   local options=''
   for (( i=0; i<"${#attributes[@]}"; i++ )); do
-    local value=$(echo "$settings" | sed "$(($i+3))q;d")
+    local value=$(echo "$settings" | sed "$(($i+4))q;d")
     [[ -z "$value" ]] && continue
     options+="-a ${attributes[$i]}=$value "
   done
 
   # Convert the file:
-  (asciidoctor -r dita-topic -b dita-topic -o - $ui_macros $options "$input_file" | dita-convert -t "$content_type" -o "$output_file" -) 2>&1
+  (asciidoctor -r dita-topic -b dita-topic -o - $ui_macros $options "$input_file" | dita-convert "$generated" -t "$content_type" -o "$output_file" -) 2>&1
 }
 
 # Open a dialog to display standard error output of the conversion:
@@ -90,9 +93,9 @@ function get_attribute_list {
 # Usage: get_conversion_settings
 function get_conversion_settings {
   if [[ -z "$1" ]]; then
-    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task|Task (generated)|Topic' --add-combo='UI macros' --combo-values='Enabled|Disabled' 2>/dev/null
+    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task' --add-combo='Generated' --combo-values='Yes|No' --add-combo='UI macros' --combo-values='Enabled|Disabled' 2>/dev/null
   else
-    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task|Task (generated)|Topic' --add-combo='UI macros' --combo-values='Enabled|Disabled' `echo "$1" | sed -e 's/^/--add-entry=/'` 2>/dev/null
+    zenity --forms --title='Conversion Settings' --text='Customize the conversion settings and define attribute values' --separator=$'\n' --add-combo='Target DITA type' --combo-values='Concept|Reference|Task' --add-combo='Generated' --combo-values='Yes|No' --add-combo='UI macros' --combo-values='Enabled|Disabled' `echo "$1" | sed -e 's/^/--add-entry=/'` 2>/dev/null
   fi
 }
 

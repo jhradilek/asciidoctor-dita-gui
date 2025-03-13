@@ -1,5 +1,5 @@
 # A makefile for asciidoctor-dita-gui
-# Copyright (C) 2024 Jaromir Hradilek
+# Copyright (C) 2024, 2025 Jaromir Hradilek
 
 # MIT License
 #
@@ -24,7 +24,7 @@
 
 # General information:
 NAME    = asciidoctor-dita-gui
-VERSION = 0.1.0
+VERSION = 0.2.0
 
 # General settings:
 SHELL   = /bin/sh

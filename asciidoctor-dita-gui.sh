@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A simple GUI for conversion from AsciiDoc to DITA
-# Copyright (C) 2024 Jaromir Hradilek
+# Copyright (C) 2024, 2025 Jaromir Hradilek
 
 # MIT License
 #
@@ -26,7 +26,7 @@
 
 # General information about the script:
 declare -r SCRIPT_NAME=${0##*/}
-declare -r SCRIPT_VERSION='0.1.0'
+declare -r SCRIPT_VERSION='0.2.0'
 
 
 # Print a message to standard error output and terminate the script with a

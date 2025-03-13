@@ -1,7 +1,7 @@
 # asciidoctor-dita-gui
 
 **asciidoctor-dita-gui** is a prototype of a simple GUI for converting
-AsciiDoc files to DITA topics, concepts, references, or tasks.
+AsciiDoc files to DITA concepts, references, or tasks.
 
 ## Prerequisites
 
@@ -45,6 +45,6 @@ You can also create a desktop launcher for the script. On most modern systems, t
 
 ## Copyright
 
-Copyright © 2024 Jaromir Hradilek
+Copyright © 2024, 2025 Jaromir Hradilek
 
 This program is free software, released under the terms of the MIT license. It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
